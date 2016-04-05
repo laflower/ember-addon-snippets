@@ -1,0 +1,12 @@
+{
+  ".source.coffee": {
+    "Console log": {
+      "prefix": "justin",
+      "body": "laflower.log $1"
+    },
+    "Consle log": {
+      "prefix": "eric",
+      "body": "ewhite.log $1"
+    }
+  }
+}
