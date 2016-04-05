@@ -9,15 +9,15 @@ Simply add them to your project's `package.json` using the following format.
 ```json
 "atomSnippets": {
   ".source.hbs": {
-    "Console log": {
-      "prefix": "justin",
-      "body": "laflower.log $1"
+    "ember-frost-button": {
+      "prefix": "frost-button",
+      "body": "{{frost-button}} $1"
     }
   },
   ".source.js": {
-    "Consle log": {
-      "prefix": "eric",
-      "body": "ewhite.log $1"
+    "Console log": {
+      "prefix": "log",
+      "body": "console.log $1"
     }
   }
 }
