@@ -4,9 +4,6 @@
   "version": "0.0.0",
   "description": "A short description of your package",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": "ember-addon-snippets:refresh"
-  },
   "repository": "https://github.com/atom/ember-addon-snippets",
   "license": "MIT",
   "engines": {
