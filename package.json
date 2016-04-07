@@ -2,9 +2,9 @@
   "name": "ember-addon-snippets",
   "main": "./lib/ember-addon-snippets",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Ember snippets for the Atom text editor",
   "keywords": [],
-  "repository": "https://github.com/atom/ember-addon-snippets",
+  "repository": "https://github.com/ciena-blueplanet/ember-addon-snippets.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
