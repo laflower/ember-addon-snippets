@@ -1,7 +1,7 @@
 {
   "name": "ember-addon-snippets",
   "main": "./lib/ember-addon-snippets",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Ember snippets for the Atom text editor",
   "keywords": [],
   "repository": "https://github.com/ciena-blueplanet/ember-addon-snippets.git",
