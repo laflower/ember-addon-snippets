@@ -1,4 +1,30 @@
 {
-  ".source.hbs": {},
-  ".source.js": {}
+   ".source.hbs": {
+      "4564": {
+         "prefix": "justin",
+         "body": "laflower.log $1"
+      },
+      "eagg": {
+         "prefix": "steven",
+         "body": "laflower.log $1"
+      },
+      "gew": {
+         "prefix": "gosia",
+         "body": "laflower.log $1"
+      }
+   },
+   ".source.js": {
+      "ghf": {
+         "prefix": "eric",
+         "body": "ewhite.log $1"
+      },
+      "argea": {
+         "prefix": "rox",
+         "body": "ewhite.log $1"
+      },
+      "agre": {
+         "prefix": "femi",
+         "body": "ewhite.log $1"
+      }
+   }
 }
