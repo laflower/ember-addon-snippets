@@ -7,7 +7,7 @@ Ember addon snippets for [Atom](http://atom.io/).
 Simply add them to your project's `package.json` using the following format.
 
 ```json
-"atomSnippets": {
+"snippets": {
   ".source.hbs": {
     "ember-frost-button": {
       "prefix": "frost-button",
