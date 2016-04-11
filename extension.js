@@ -4,6 +4,7 @@ var utils = require('./refresh-snippets');
 function activate(context) {
 
     utils.watchNodeModules(vscode.workspace.rootPath)
+    utils.refreshSnippets(vscode.workspace.rootPath)
     
     var disposable = vscode.commands.registerCommand('extension.refreshSnippets', function () {
         utils.refreshSnippets(vscode.workspace.rootPath)
