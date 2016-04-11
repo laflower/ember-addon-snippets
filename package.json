@@ -1,16 +1,49 @@
 {
-  "name": "ember-addon-snippets",
-  "main": "./lib/ember-addon-snippets",
-  "version": "0.0.0",
-  "description": "A short description of your package",
-  "keywords": [],
-  "repository": "https://github.com/atom/ember-addon-snippets",
-  "license": "MIT",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  },
-  "dependencies": {
-    "chokidar": "^1.4.3",
-    "jquery": "^2.2.2"
-  }
+    "name": "ember-addon-snippets",
+    "displayName": "ember-addon-snippets",
+    "description": "Ember addon snippets for VS Code",
+    "version": "0.0.1",
+    "publisher": "ciena-blueplanet",
+    "engines": {
+        "vscode": "^0.10.10"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.refreshSnippets",
+            "title": "Ember: Force Refresh Snippets"
+        }],
+        "languages": [{
+            "id": "ember",
+            "aliases": [
+                "Ember"
+            ],
+            "extensions": [
+                ".js",
+                ".hbs"
+            ],
+            "firstLine": "^#!/.*\\bpython[0-9.-]*\\b",
+            "configuration": "./python.configuration.json"
+        }],
+           "snippets": [{
+                "language": "ember",
+                "path": "./snippets/snippets.json"
+        }]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0"
+    },
+    "dependencies": {
+        "chokidar": "^1.4.3",
+        "jquery": "^2.2.2"
+    }
 }
