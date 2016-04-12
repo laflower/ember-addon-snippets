@@ -23,26 +23,31 @@ module.exports = refreshSnippets = {
         this.projectRoot = projectRoot
         console.log("watching node modules at: " + this.projectRoot)
         var watchers = []
-        
-        try {
-            var node_modules = fs.readdirSync(this.projectRoot + '/node_modules')
-        } catch (e) {
-            console.log(this.projectRoot + " does not have node_modules")
-            return
-        }
-        
-        watcher = chokidar.watch(this.projectRoot + "/node_modules/", {
+        watcher = chokidar.watch(this.projectRoot, {
             usePolling: true,
             interval: 15000,
             ignored: function(path) {
-                // ignores everything but package.json and
-                // its containing ember directory
-                return path.search(/node_modules\/ember-.+\/package.json$/) === -1 &&
-                    !(path.indexOf('.') === -1 &&
-                        path.search(/node_modules\/.+\/.+/) === -1)
+                if(refreshSnippets.projectRoot.indexOf(path) !== -1){
+                    return false
+                }
+                else if (path == refreshSnippets.projectRoot + "/node_modules") {
+                    return false
+                }
+                else if(path.indexOf(refreshSnippets.projectRoot + "/node_modules/ember-") !== -1){
+                    if(path.match(/\//g).length == refreshSnippets.projectRoot.match(/\//g).length + 2){
+                        return false
+                    }
+                    else if(path.indexOf('/snippets') !== -1){
+                        if(path.endsWith('/snippets'))
+                            return false
+                        else if(path.endsWith('/snippets/snippets.json'))
+                            return false
+                    }
+                }
+                return true
             },
             ignoreInitial: true,
-            depth: 2
+            depth: 3
         });
         watcher
             .on('add', function(path) {
@@ -69,22 +74,24 @@ module.exports = refreshSnippets = {
             if (!(node_modules[i].startsWith("ember-")))
                 continue
             try {
-                var module_package_json = JSON.parse(fs.readFileSync(this.projectRoot +
+                var module_snippets_json = JSON.parse(fs.readFileSync(this.projectRoot +
                     '/node_modules/' +
                     node_modules[i] +
-                    "/package.json"))
+                    "/snippets/" +
+                   "snippets.json"))
             } catch (e) {
-                console.log("Something went wrong when opening " + node_modules[i])
+                console.log("Something went wrong when opening and json parsing " + node_modules[i])
                 continue;
             }
 
-            var snippets = module_package_json.snippets
+            var snippets = module_snippets_json.snippets
             if (snippets == undefined) {
                 continue;
             } else {
                 snippetsArray.push(snippets)
             }
         }
+        console.log(snippetsArray)
         if (snippetsArray.length >= 1) {
             var snippetsObject = snippetsArray[0] // merge the snippets array
             for (var i = 1; i < snippetsArray.length; i++) {
