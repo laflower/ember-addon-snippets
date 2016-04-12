@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path')
-var $ = require('jQuery');
+var extend = require('node.extend');
 var chokidar = require('chokidar');
 
 module.exports = refreshSnippets = {
@@ -74,7 +74,7 @@ module.exports = refreshSnippets = {
             if (!(node_modules[i].startsWith("ember-")))
                 continue
             try {
-                var module_snippets_json = JSON.parse(fs.readFileSync(this.projectRoot +
+                var snippets = JSON.parse(fs.readFileSync(this.projectRoot +
                     '/node_modules/' +
                     node_modules[i] +
                     "/snippets/" +
@@ -84,18 +84,16 @@ module.exports = refreshSnippets = {
                 continue;
             }
 
-            var snippets = module_snippets_json.snippets
             if (snippets == undefined) {
                 continue;
             } else {
                 snippetsArray.push(snippets)
             }
         }
-        console.log(snippetsArray)
-        if (snippetsArray.length >= 1) {
+        if (snippetsArray.length >= 1) { 
             var snippetsObject = snippetsArray[0] // merge the snippets array
             for (var i = 1; i < snippetsArray.length; i++) {
-                snippetsObject = $.extend(true, {}, snippetsObject, snippetsArray[i]);
+                snippetsObject = extend(true, {}, snippetsObject, snippetsArray[i]);
             }
             console.log(JSON.stringify(snippetsObject))
             var snippetsJSONPath = path.join(__dirname + '/snippets/snippets.json')
