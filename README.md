@@ -10,21 +10,20 @@ Ember addon snippets for [Atom](http://atom.io/).
 
 ```json
 {
-  "snippets": {
-    ".source.hbs": {
-      "ember-frost-button": {
-        "prefix": "frost-button",
-        "body": "{{frost-button}} $1"
-      },
-      ...
+  ".source.hbs": {
+    "ember-frost-button": {
+      "prefix": "frost-button",
+      "body": "{{frost-button}} $1"
     },
-    ".source.js": {
-      "Console log": {
-        "prefix": "log",
-        "body": "console.log $1"
-      },
-      ...
-    }
-  }
+    ...
+  },
+  ".source.js": {
+    "Console log": {
+      "prefix": "log",
+      "body": "console.log $1"
+    },
+    ...
+  },
+  ...
 }
 ```
